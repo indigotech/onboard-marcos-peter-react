@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-align: center;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .title {
+    font-size: 3.5vh;
+    position: absolute;
+    top: 7vh;
+  }
+
+  .login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  label {
+    width: 30vw;
+    font-size: 1.8vh;
+    font-weight: 500;
+    color: #686868;
+    align-self: flex-start;
+  }
+
+  input {
+    width: 80vw;
+    height: 7vh;
+    border-radius: 2vh;
+    border: 0.3vh solid #ccc;
+    margin-top: 0.8vh;
+    margin-bottom: 5vh;
+  }
+
+  .btn-login {
+    width: 80vw;
+    height: 7vh;
+    border-radius: 2vh;
+    border: none;
+    background-color: #5d53cc;
+    color: #fff;
+    font-weight: 500;
+    font-size: 2.5vh;
+  }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 769px) {
+  body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    height: 60vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .title {
+    font-size: 3.5vh;
+    position: absolute;
+    top: 23vh;
+  }
+
+  .login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4vh;
+  }
+
+  label {
+    width: 18vw;
+    font-size: 1.8vh;
+    font-weight: 500;
+    color: #686868;
+    align-self: flex-start;
+  }
+
+  input {
+    width: 25vw;
+    height: 7vh;
+    border-radius: 2vh;
+    border: 0.3vh solid #ccc;
+    margin-top: 0.8vh;
+    margin-bottom: 5vh;
+  }
+
+  .btn-login {
+    width: 25vw;
+    height: 7vh;
+    border-radius: 2vh;
+    border: none;
+    background-color: #5d53cc;
+    color: #fff;
+    font-weight: 500;
+    font-size: 2.5vh;
+    cursor: pointer;
+  }
+}
