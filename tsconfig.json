@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": false,
-    "noImplicitAny": false,
-    "preserveConstEnums": true,
-    "noEmitHelpers": false,
-    "noImplicitReturns": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "sourceMap": true,
+    "jsx": "react",
+    "target": "ES2022",
+    "module": "CommonJS",
+    "rootDir": "./",
+    "outDir": "./dist",
+    "newLine": "lf",
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  },
-  "include": ["./src/**/*.ts"],
-  "exclude": ["node_modules", "__tests__"]
+    "types": ["node"]
+  }
 }
