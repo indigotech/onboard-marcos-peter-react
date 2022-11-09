@@ -1,9 +1,14 @@
+:root {
+  --main-text-color: #686868;
+  --btn-text-color: #fff;
+  --btn-bg-color: #5d53cc;
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  text-align: center;
 }
 
 /* Mobile */
@@ -24,17 +29,16 @@
   }
 
   .login-form {
-    width: 100%;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   label {
-    width: 30vw;
     font-size: 1.8vh;
     font-weight: 500;
-    color: #686868;
+    color: var(--main-text-color);
     align-self: flex-start;
   }
 
@@ -42,9 +46,14 @@
     width: 80vw;
     height: 7vh;
     border-radius: 2vh;
-    border: 0.3vh solid #ccc;
+    outline: 0.3vh solid #ccc;
+    border: none;
     margin-top: 0.8vh;
     margin-bottom: 5vh;
+    font-size: 2vh;
+    font-weight: 500;
+    padding: 0 1vh;
+    color: var(--main-text-color);
   }
 
   .btn-login {
@@ -52,10 +61,23 @@
     height: 7vh;
     border-radius: 2vh;
     border: none;
-    background-color: #5d53cc;
-    color: #fff;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
     font-weight: 500;
     font-size: 2.5vh;
+  }
+
+  .login-error {
+    position: absolute;
+    width: 85vw;
+    font-size: 1.5vh;
+    color: red;
+    bottom: 22vh;
+    text-align: center;
+    background-color: #ffe8e8;
+    border-radius: 1.5vh;
+    padding: 1vh;
+    box-shadow: 0.6vh 0.6vh 1vh #9a8282;
   }
 }
 
@@ -77,17 +99,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   .title {
     font-size: 3.5vh;
     position: absolute;
-    top: 23vh;
+    top: 18vh;
   }
 
   .login-form {
-    width: 100%;
+    width: 25vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -95,10 +117,9 @@
   }
 
   label {
-    width: 18vw;
     font-size: 1.8vh;
     font-weight: 500;
-    color: #686868;
+    color: var(--main-text-color);
     align-self: flex-start;
   }
 
@@ -109,6 +130,10 @@
     border: 0.3vh solid #ccc;
     margin-top: 0.8vh;
     margin-bottom: 5vh;
+    font-size: 2vh;
+    padding: 0 1vh;
+    font-weight: 500;
+    color: var(--main-text-color);
   }
 
   .btn-login {
@@ -116,10 +141,23 @@
     height: 7vh;
     border-radius: 2vh;
     border: none;
-    background-color: #5d53cc;
-    color: #fff;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-text-color);
     font-weight: 500;
     font-size: 2.5vh;
     cursor: pointer;
+  }
+
+  .login-error {
+    position: absolute;
+    width: 25vw;
+    font-size: 1.5vh;
+    color: red;
+    bottom: 20vh;
+    text-align: center;
+    background-color: #ffe8e8;
+    border-radius: 1.5vh;
+    padding: 1vh;
+    box-shadow: 0.6vh 0.6vh 1vh #9a8282;
   }
 }
