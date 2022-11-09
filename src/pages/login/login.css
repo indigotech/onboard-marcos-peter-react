@@ -2,6 +2,8 @@
   --main-text-color: #686868;
   --btn-text-color: #fff;
   --btn-bg-color: #5d53cc;
+  --error-text: #c72929;
+  --error-outline: 0.3vh solid #ff0000;
 }
 
 * {
@@ -57,6 +59,7 @@
   }
 
   .btn-login {
+    margin-top: 3vh;
     width: 80vw;
     height: 7vh;
     border-radius: 2vh;
@@ -67,17 +70,31 @@
     font-size: 2.5vh;
   }
 
+  .error {
+    color: var(--error-text);
+    outline: var(--error-outline);
+  }
+
   .login-error {
-    position: absolute;
-    width: 85vw;
+    width: 80vw;
     font-size: 1.5vh;
-    color: red;
-    bottom: 22vh;
+    font-weight: 500;
+    color: var(--error-text);
     text-align: center;
-    background-color: #ffe8e8;
-    border-radius: 1.5vh;
-    padding: 1vh;
-    box-shadow: 0.6vh 0.6vh 1vh #9a8282;
+  }
+
+  .login-error:empty {
+    display: none;
+  }
+
+  .email-error {
+    position: absolute;
+    bottom: 57vh;
+  }
+
+  .password-error {
+    position: absolute;
+    bottom: 38vh;
   }
 }
 
@@ -113,7 +130,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 4vh;
   }
 
   label {
@@ -137,6 +153,7 @@
   }
 
   .btn-login {
+    margin-top: 3vh;
     width: 25vw;
     height: 7vh;
     border-radius: 2vh;
@@ -148,16 +165,31 @@
     cursor: pointer;
   }
 
+  .error {
+    color: var(--error-text);
+    outline: var(--error-outline);
+  }
+
   .login-error {
-    position: absolute;
     width: 25vw;
     font-size: 1.5vh;
-    color: red;
+    font-weight: 500;
+    color: var(--error-text);
     bottom: 20vh;
     text-align: center;
-    background-color: #ffe8e8;
-    border-radius: 1.5vh;
-    padding: 1vh;
-    box-shadow: 0.6vh 0.6vh 1vh #9a8282;
+  }
+
+  .login-error:empty {
+    display: none;
+  }
+
+  .email-error {
+    position: absolute;
+    bottom: 56vh;
+  }
+
+  .password-error {
+    position: absolute;
+    bottom: 38vh;
   }
 }

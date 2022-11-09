@@ -1,69 +1,28 @@
-import React from "react";
+import React, { useState, FormEvent } from "react";
 import "./login.css";
-
-interface LoginInput {
-  email: string;
-  password: string;
-}
-
-interface ErrorFormat {
-  error: string;
-  field: string;
-}
-
-const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{3})+$/;
-const passwordRegex = new RegExp(
-  "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{7,20})"
-);
-
-function validateFormInputs(input: LoginInput) {
-  if (!input.email) {
-    // return "Email is required.";
-    return { error: "Email is required.", field: "email" };
-  }
-
-  if (!emailRegex.test(input.email)) {
-    // return "Invalid email format.";
-    return { error: "Invalid email format.", field: "email" };
-  }
-
-  if (!input.password) {
-    // return "Password is required.";
-    return { error: "Password is required.", field: "password" };
-  }
-
-  if (!passwordRegex.test(input.password)) {
-    // return "Password has to be at least 7 characters long, one uppercase letter, one lowercase letter, one number and one special character.";
-    return {
-      error:
-        "Password has to be at least 7 characters long, one uppercase letter, one lowercase letter, one number and one special character.",
-      field: "password",
-    };
-  }
-}
+import { ErrorFormat } from "../../models/error";
+import { validateEmail } from "../../validators/email";
+import { validatePassword } from "../../validators/password";
 
 export const Login = () => {
-  const [input, setInput] = React.useState<LoginInput>({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = React.useState<ErrorFormat>({
-    error: "",
-    field: "",
-  });
-  const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState<ErrorFormat[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const error = validateFormInputs(input);
+    const error = [validateEmail(email), validatePassword(password)].filter(
+      (e) => e
+    );
 
-    if (error) {
-      setError({ error: error.error, field: error.field });
-      return;
+    setErrors(error.length > 0 ? error : []);
+
+    if (error.length === 0) {
+      setIsSubmitting(true);
     }
 
-    setIsSubmitting(true);
-    setError({ error: "", field: "" });
+    return;
   };
 
   return (
@@ -76,16 +35,18 @@ export const Login = () => {
             type="email"
             name="email"
             id="email"
-            value={input.email}
-            style={{
-              color: error.field === "email" ? "red" : "",
-              outline: error.field === "email" ? ".3vh solid red" : "",
-            }}
+            className={errors.find((e) => e.field === "email") ? "error" : ""}
+            value={email}
             onChange={(e) => {
-              setInput({ ...input, email: e.target.value });
-              setError({ error: "", field: "" });
+              setEmail(e.target.value);
+              setErrors([...errors].filter((e) => e.field !== "email"));
             }}
           />
+          <div className="login-error email-error">
+            {errors.map((error) =>
+              error.field === "email" ? error.message : null
+            )}
+          </div>
         </div>
         <div className="login-input">
           <label htmlFor="password">Password</label>
@@ -93,21 +54,24 @@ export const Login = () => {
             type="password"
             name="password"
             id="password"
-            value={input.password}
-            style={{
-              color: error.field === "password" ? "red" : "",
-              outline: error.field === "password" ? ".3vh solid red" : "",
-            }}
+            className={
+              errors.find((e) => e.field === "password") ? "error" : ""
+            }
+            value={password}
             onChange={(e) => {
-              setInput({ ...input, password: e.target.value });
-              setError({ error: "", field: "" });
+              setPassword(e.target.value);
+              setErrors([...errors].filter((e) => e.field !== "password"));
             }}
           />
+          <div className="login-error password-error">
+            {errors.map((error) =>
+              error.field === "password" ? error.message : null
+            )}
+          </div>
         </div>
         <button className="btn-login" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Loading..." : "Login"}
         </button>
-        {error.error && <div className="login-error">{error.error}</div>}
       </form>
     </div>
   );
