@@ -2,13 +2,30 @@ import React, { useState, FormEvent } from "react";
 import "./login.css";
 import { validateEmail } from "../../validators/email";
 import { validatePassword } from "../../validators/password";
+import { loginMutation } from "../../data/graphql/mutations/login";
 
-export const Login = () => {
+export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState<string>(null);
+  const [loginError, setLoginError] = useState<string>(null);
   const [passwordError, setPasswordError] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const login = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const userResponse = await loginMutation(email, password);
+      window.localStorage.setItem("token", userResponse.token);
+      setLoginError(null);
+    } catch (error) {
+      setLoginError(error.message);
+    }
+
+    setIsSubmitting(false);
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,7 +36,7 @@ export const Login = () => {
     setPasswordError(passwordError);
 
     if (!emailError && !passwordError) {
-      setIsSubmitting(true);
+      login(e);
     }
 
     return;
@@ -62,6 +79,7 @@ export const Login = () => {
         <button className="btn-login" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Loading..." : "Login"}
         </button>
+        <div className="login-error failed-login">{loginError}</div>
       </form>
     </div>
   );

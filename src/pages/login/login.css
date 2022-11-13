@@ -96,6 +96,11 @@
     position: absolute;
     bottom: 38vh;
   }
+
+  .failed-login {
+    position: absolute;
+    bottom: 22vh;
+  }
 }
 
 /* Desktop */
@@ -191,5 +196,10 @@
   .password-error {
     position: absolute;
     bottom: 38vh;
+  }
+
+  .failed-login {
+    position: absolute;
+    bottom: 24vh;
   }
 }
