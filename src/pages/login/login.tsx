@@ -3,29 +3,21 @@ import "./login.css";
 import { validateEmail } from "../../validators/email";
 import { validatePassword } from "../../validators/password";
 import { loginMutation } from "../../data/graphql/mutations/login";
+import { useMutation } from "@apollo/client";
+import { client } from "../../data/graphql/client";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState<string>(null);
-  const [loginError, setLoginError] = useState<string>(null);
   const [passwordError, setPasswordError] = useState<string>("");
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const login = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const userResponse = await loginMutation(email, password);
-      window.localStorage.setItem("token", userResponse.token);
-      setLoginError(null);
-    } catch (error) {
-      setLoginError(error.message);
-    }
-
-    setIsSubmitting(false);
-  };
+  const [login, { loading, error }] = useMutation(loginMutation, {
+    client: client,
+    onCompleted: (data) => {
+      window.localStorage.setItem("auth-token", data.login.token);
+    },
+  });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +28,7 @@ export const LoginPage = () => {
     setPasswordError(passwordError);
 
     if (!emailError && !passwordError) {
-      login(e);
+      login({ variables: { data: { email, password } } });
     }
 
     return;
@@ -76,10 +68,12 @@ export const LoginPage = () => {
           />
           <div className="login-error password-error">{passwordError}</div>
         </div>
-        <button className="btn-login" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Loading..." : "Login"}
+        <button className="btn-login" type="submit" disabled={loading}>
+          {loading ? "Loading..." : "Login"}
         </button>
-        <div className="login-error failed-login">{loginError}</div>
+        <div className="login-error failed-login">
+          {error ? error.message : ""}
+        </div>
       </form>
     </div>
   );
