@@ -70,46 +70,6 @@
     font-size: 2.5vh;
   }
 
-  .btn-loading {
-    margin-top: 3vh;
-    width: 80vw;
-    height: 7vh;
-    border-radius: 2vh;
-    border: none;
-    background-color: var(--btn-bg-color);
-    color: var(--btn-text-color);
-    font-weight: 500;
-    font-size: 2.5vh;
-    cursor: not-allowed;
-  }
-
-  .btn-loading > span {
-    visibility: hidden;
-  }
-
-  .btn-loading:after {
-    content: "";
-    position: absolute;
-    width: 4vh;
-    height: 4vh;
-    bottom: 30vh;
-    left: 43.2vw;
-    border: 0.6vh solid transparent;
-    border-top-color: var(--error-text);
-    border-radius: 50%;
-    animation: button-loading-spinner 0.5s ease infinite;
-  }
-
-  @keyframes button-loading-spinner {
-    from {
-      transform: rotate(0turn);
-    }
-
-    to {
-      transform: rotate(1turn);
-    }
-  }
-
   .error {
     color: var(--error-text);
     outline: var(--error-outline);
@@ -208,46 +168,6 @@
     font-weight: 500;
     font-size: 2.5vh;
     cursor: pointer;
-  }
-
-  .btn-loading {
-    margin-top: 3vh;
-    width: 25vw;
-    height: 7vh;
-    border-radius: 2vh;
-    border: none;
-    background-color: var(--btn-bg-color);
-    color: var(--btn-text-color);
-    font-weight: 500;
-    font-size: 2.5vh;
-    cursor: not-allowed;
-  }
-
-  .btn-loading > span {
-    visibility: hidden;
-  }
-
-  .btn-loading:after {
-    content: "";
-    position: absolute;
-    width: 4vh;
-    height: 4vh;
-    bottom: 30vh;
-    left: 48.2vw;
-    border: 0.6vh solid transparent;
-    border-top-color: var(--error-text);
-    border-radius: 50%;
-    animation: button-loading-spinner 0.5s ease infinite;
-  }
-
-  @keyframes button-loading-spinner {
-    from {
-      transform: rotate(0turn);
-    }
-
-    to {
-      transform: rotate(1turn);
-    }
   }
 
   .error {
