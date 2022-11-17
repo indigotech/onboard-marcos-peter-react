@@ -80,8 +80,12 @@ export const LoginPage = () => {
           />
           <div className="login-error password-error">{passwordError}</div>
         </div>
-        <button className="btn-login" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Loading..." : "Login"}
+        <button
+          className={isSubmitting ? "btn-loading" : "btn-login"}
+          type="submit"
+          disabled={isSubmitting}
+        >
+          <span>Login</span>
         </button>
         <div className="login-error failed-login">{loginError}</div>
       </form>
