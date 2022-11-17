@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from "react";
-import "./login.css";
+import "./style.css";
 import { validateEmail } from "../../validators/email";
 import { validatePassword } from "../../validators/password";
 import { loginMutation } from "../../data/graphql/mutations/login";
@@ -18,13 +18,19 @@ export const LoginPage = () => {
 
     try {
       const userResponse = await loginMutation(email, password);
-      window.localStorage.setItem("token", userResponse.token);
+      window.localStorage.setItem("auth-token", userResponse.token);
       setLoginError(null);
     } catch (error) {
       setLoginError(error.message);
     }
 
+    const hasUser = window.localStorage.getItem("auth-token");
+
     setIsSubmitting(false);
+
+    if (hasUser) {
+      window.location.href = "/home";
+    }
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -38,8 +44,6 @@ export const LoginPage = () => {
     if (!emailError && !passwordError) {
       login(e);
     }
-
-    return;
   };
 
   return (
