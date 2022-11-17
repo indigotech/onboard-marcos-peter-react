@@ -67,8 +67,12 @@ export const LoginPage: React.FC = () => {
           />
           <div className="login-error password-error">{passwordError}</div>
         </div>
-        <button className="btn-login" type="submit" disabled={loading}>
-          {loading ? "Loading..." : "Login"}
+        <button
+          className={loading ? "btn-loading" : "btn-login"}
+          type="submit"
+          disabled={loading}
+        >
+          <span>Login</span>
         </button>
         <div className="login-error failed-login">
           {error ? error.message : ""}
