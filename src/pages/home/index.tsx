@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
-import { Loading } from "../../components/loading/loading";
+import { UsersCardLoading } from "../../components/users-card-loading/users-card-loading";
 import { usersQuery } from "../../data/graphql/queries/users";
 import "./style.css";
 
@@ -20,7 +20,7 @@ export const HomePage: React.FC = () => {
         <h2 className="sub-title">Lista de Taqtilers:</h2>
         <ul className="user-list">
           {loading ? (
-            <Loading />
+            <UsersCardLoading />
           ) : (
             data.users.nodes.map((user) => (
               <li className="user-card" key={user.id}>

@@ -6,10 +6,7 @@ export const usersQuery = gql`
       nodes {
         id
         name
-        phone
-        birthDate
         email
-        role
       }
     }
   }
