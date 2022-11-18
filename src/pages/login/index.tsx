@@ -5,6 +5,7 @@ import { validatePassword } from "../../validators/password";
 import { loginMutation } from "../../data/graphql/mutations/login";
 import { useMutation } from "@apollo/client";
 import { client } from "../../data/graphql/client";
+import { LoadingSpinning } from "../../components/button-loading";
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,9 @@ export const LoginPage: React.FC = () => {
     onCompleted: (data) => {
       window.localStorage.setItem("auth-token", data.login.token);
       window.location.href = "/home";
+    },
+    onError: (error) => {
+      return error;
     },
   });
 
@@ -67,12 +71,8 @@ export const LoginPage: React.FC = () => {
           />
           <div className="login-error password-error">{passwordError}</div>
         </div>
-        <button
-          className={loading ? "btn-loading" : "btn-login"}
-          type="submit"
-          disabled={loading}
-        >
-          <span>Login</span>
+        <button className="btn-login" type="submit" disabled={loading}>
+          {loading ? <LoadingSpinning /> : "Entrar"}
         </button>
         <div className="login-error failed-login">
           {error ? error.message : ""}
