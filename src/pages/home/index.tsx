@@ -1,8 +1,16 @@
+import { useQuery } from "@apollo/client";
 import React from "react";
-import { mockedData } from "./mocked-data";
+import { Loading } from "../../components/loading/loading";
+import { usersQuery } from "../../data/graphql/queries/users";
 import "./style.css";
 
 export const HomePage: React.FC = () => {
+  const { loading, data } = useQuery(usersQuery, {
+    context: {
+      headers: { authorization: window.localStorage.getItem("auth-token") },
+    },
+  });
+
   return (
     <div className="container">
       <div className="title">
@@ -11,12 +19,16 @@ export const HomePage: React.FC = () => {
       <div className="users">
         <h2 className="sub-title">Lista de Taqtilers:</h2>
         <ul className="user-list">
-          {mockedData.map((user) => (
-            <li className="user-card" key={user.id}>
-              <p>Nome: {user.name}</p>
-              <p>Email: {user.email}</p>
-            </li>
-          ))}
+          {loading ? (
+            <Loading />
+          ) : (
+            data.users.nodes.map((user) => (
+              <li className="user-card" key={user.id}>
+                <p>Nome: {user.name}</p>
+                <p>Email: {user.email}</p>
+              </li>
+            ))
+          )}
         </ul>
       </div>
     </div>
