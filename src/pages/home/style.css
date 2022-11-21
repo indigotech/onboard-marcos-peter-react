@@ -48,7 +48,7 @@ body {
 }
 
 .users {
-  margin-top: 35vh;
+  margin-top: 20vh;
   width: 90vw;
   height: 100vh;
   display: flex;
@@ -97,10 +97,25 @@ body {
 /* Mobile */
 
 @media (max-width: 768px) {
+  .home-container {
+    margin-top: 20vh;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    row-gap: 1vh;
+  }
+
   .title {
     border-radius: 0 0 4vh 4vh;
   }
+
   .users-list {
+    width: 80vw;
+  }
+
+  .user-card {
     width: 80vw;
   }
 }
@@ -108,6 +123,9 @@ body {
 /* Desktop */
 
 @media screen and (min-width: 769px) {
+  .users {
+    margin-top: 35vh;
+  }
   .user-card {
     width: 40vw;
   }

@@ -9,7 +9,7 @@
 @media (max-width: 768px) {
   .skeleton-container {
     position: absolute;
-    top: 31vh;
+    top: 35vh;
     left: 0vh;
     width: 100vw;
     height: 60vh;
