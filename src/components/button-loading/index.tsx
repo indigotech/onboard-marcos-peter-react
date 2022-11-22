@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-export const LoadingSpinning = () => {
+export const LoadingSpinning: React.FC = () => {
   return (
     <svg viewBox="0 0 50 50" className="spinner">
       <circle className="ring" cx="25" cy="25" r="22.5" />

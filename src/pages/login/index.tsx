@@ -19,9 +19,7 @@ export const LoginPage: React.FC = () => {
       window.localStorage.setItem("auth-token", data.login.token);
       window.location.href = "/home";
     },
-    onError: (error) => {
-      return error;
-    },
+    onError: (error) => error,
   });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
