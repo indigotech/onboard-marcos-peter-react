@@ -1,8 +1,98 @@
-.home-page {
-  height: 100%;
+:root {
+  --main-text-color: #686868;
+  --btn-text-color: #fff;
+  --btn-bg-color: #5d53cc;
+  --error-text: #c72929;
+  --error-outline: 0.3vh solid #ff0000;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.container {
+  position: relative;
+  top: 25vh;
   width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  border-radius: 0 0 5vh 5vh;
+}
+
+.title h1 {
+  color: #fff;
+  font-size: 4vh;
+  text-align: center;
+}
+
+.sub-title {
+  font-size: 2.5vh;
+  color: var(--main-text-color);
+}
+
+.users {
+  height: 100vh;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  row-gap: 1vh;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  row-gap: 1.5vh;
+}
+
+.user-card {
+  width: 70vw;
+  color: var(--main-text-color);
+  font-weight: 500;
+  background-color: #d2ffc3;
+  padding: 1vh;
+  list-style-type: none;
+  border-radius: 1vh;
+  box-shadow: 0.7vh 0.7vh 0vh 0vh var(--btn-bg-color);
+}
+
+.user-card:nth-child(odd) {
+  color: #fff;
+  background-color: #7d9f71;
+  box-shadow: 0.7vh 0.7vh 0vh 0vh var(--btn-bg-color);
+}
+
+.user-card:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+/* Desktop */
+
+@media screen and (min-width: 769px) {
+  .user-card {
+    width: 40vw;
+  }
 }
