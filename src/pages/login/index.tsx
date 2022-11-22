@@ -1,12 +1,12 @@
 import React, { useState, FormEvent } from "react";
-import "./login.css";
+import "./style.css";
 import { validateEmail } from "../../validators/email";
 import { validatePassword } from "../../validators/password";
 import { loginMutation } from "../../data/graphql/mutations/login";
 import { useMutation } from "@apollo/client";
 import { client } from "../../data/graphql/client";
 
-export const LoginPage = () => {
+export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState<string>(null);
@@ -16,6 +16,7 @@ export const LoginPage = () => {
     client: client,
     onCompleted: (data) => {
       window.localStorage.setItem("auth-token", data.login.token);
+      window.location.href = "/home";
     },
   });
 
@@ -30,8 +31,6 @@ export const LoginPage = () => {
     if (!emailError && !passwordError) {
       login({ variables: { data: { email, password } } });
     }
-
-    return;
   };
 
   return (

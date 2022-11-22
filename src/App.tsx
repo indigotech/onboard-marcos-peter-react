@@ -1,12 +1,6 @@
 import React from "react";
-import { LoginPage } from "./pages/login/login";
+import { Router } from "./Routes/routes";
 
-function App() {
-  return (
-    <div className="App">
-      <LoginPage />
-    </div>
-  );
-}
-
-export default App;
+export const App = () => {
+  return <Router />;
+};

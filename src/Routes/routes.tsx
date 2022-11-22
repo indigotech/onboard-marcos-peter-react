@@ -1,0 +1,35 @@
+import React, { PropsWithChildren } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { LoginPage } from "../pages/login";
+import { HomePage } from "../pages/home";
+
+const AuthGuard: React.FC<PropsWithChildren> = ({ children }) => {
+  const token = window.localStorage.getItem("auth-token");
+
+  if (!token) {
+    return (
+      <>
+        <Navigate to="/" />
+      </>
+    );
+  }
+
+  return <>{children}</>;
+};
+
+export const Router = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route
+        path="/home"
+        element={
+          <AuthGuard>
+            <HomePage />
+          </AuthGuard>
+        }
+      />
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
+  );
+};
