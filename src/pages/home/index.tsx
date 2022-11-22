@@ -6,6 +6,7 @@ import { PaginationSelector } from "../../components/pagination-selector";
 import { paginatedUsersQuery } from "../../data/graphql/queries/paginated-users";
 import "./style.css";
 import { PaginationLoading } from "../../components/pagination-loading";
+import { AddButton } from "../../components/add-button";
 
 export const HomePage: React.FC = () => {
   const [usersPerPage, setUsersPerPage] = useState(2);
@@ -61,6 +62,7 @@ export const HomePage: React.FC = () => {
             hasNextPage={data.users.pageInfo.hasNextPage}
           />
         )}
+        <AddButton />
       </div>
     </>
   );
