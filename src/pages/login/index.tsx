@@ -6,7 +6,7 @@ import { loginMutation } from "../../data/graphql/mutations/login";
 import { useMutation } from "@apollo/client";
 import { client } from "../../data/graphql/client";
 
-export const LoginPage = () => {
+export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState<string>(null);

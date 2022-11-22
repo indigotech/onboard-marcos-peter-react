@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-export const HomePage = () => {
+export const HomePage: React.FC = () => {
   return (
     <>
       <div className="home-page">

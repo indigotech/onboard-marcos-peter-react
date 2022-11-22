@@ -1,19 +1,20 @@
-import React, { ReactElement } from "react";
+import React, { PropsWithChildren } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { LoginPage } from "../pages/login";
 import { HomePage } from "../pages/home";
 
-interface ChildrenTypes {
-  children: ReactElement;
-}
-
-const Private = ({ children }: ChildrenTypes) => {
+const AuthGuard: React.FC<PropsWithChildren> = ({ children }) => {
   const token = window.localStorage.getItem("auth-token");
 
   if (!token) {
-    return <Navigate to="/" />;
+    return (
+      <>
+        <Navigate to="/" />
+      </>
+    );
   }
-  return children;
+
+  return <>{children}</>;
 };
 
 export const Router = () => {
@@ -23,9 +24,9 @@ export const Router = () => {
       <Route
         path="/home"
         element={
-          <Private>
+          <AuthGuard>
             <HomePage />
-          </Private>
+          </AuthGuard>
         }
       />
       <Route path="*" element={<Navigate to="/" />} />
