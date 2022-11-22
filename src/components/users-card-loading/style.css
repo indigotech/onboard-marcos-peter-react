@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.skeleton-container {
+  position: absolute;
+  top: 31vh;
+  left: 0vh;
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1.2vh;
+}
+
+.skeleton {
+  width: 78vw;
+  height: 8vh;
+  background-color: #9f9f9f;
+  box-shadow: 0.7vh 0.7vh 0vh 0vh #767575;
+  border-radius: 1vh;
+  animation: pulse 2s infinite;
+  list-style-type: none;
+}
+
+/* Desktop */
+
+@media (min-width: 769px) {
+  .skeleton-container {
+    position: absolute;
+    top: 35vh;
+    row-gap: 2vh;
+  }
+
+  .skeleton {
+    width: 25vw;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

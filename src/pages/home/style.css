@@ -1,9 +1,14 @@
 :root {
   --main-text-color: #686868;
+  --bg-dark: #1f1f1f;
   --btn-text-color: #fff;
   --btn-bg-color: #5d53cc;
+  --text-dark: #171335;
+  --main-list-bg-color: #5047b7;
   --error-text: #c72929;
   --error-outline: 0.3vh solid #ff0000;
+  --list-box-shadow: 0.7vh 0.7vh 0vh 0vh #241e67;
+  --list-bg-color-variation: #3b329c;
 }
 
 * {
@@ -16,77 +21,88 @@ body {
   background-color: #f2f2f2;
 }
 
-.container {
-  position: relative;
-  top: 25vh;
-  width: 100%;
-  height: 100vh;
+.home-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .title {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100vw;
   height: 20vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #000;
-  border-radius: 0 0 5vh 5vh;
-}
-
-.title h1 {
-  color: #fff;
-  font-size: 4vh;
-  text-align: center;
+  position: fixed;
+  top: 0;
+  font-size: 2vh;
+  color: #f2f2f2;
+  background-color: var(--bg-dark);
 }
 
 .sub-title {
   font-size: 2.5vh;
-  color: var(--main-text-color);
+  margin-top: 6vh;
+  color: var(--text-dark);
 }
 
 .users {
-  height: 100vh;
+  margin-top: 35vh;
   width: 90vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 1vh;
 }
 
-.user-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  row-gap: 1.5vh;
-}
-
-.user-card {
-  width: 70vw;
-  color: var(--main-text-color);
-  font-weight: 500;
-  background-color: #d2ffc3;
-  padding: 1vh;
-  list-style-type: none;
-  border-radius: 1vh;
-  box-shadow: 0.7vh 0.7vh 0vh 0vh var(--btn-bg-color);
-}
-
 .user-card:nth-child(odd) {
-  color: #fff;
-  background-color: #7d9f71;
-  box-shadow: 0.7vh 0.7vh 0vh 0vh var(--btn-bg-color);
+  background-color: var(--list-bg-color-variation);
 }
 
 .user-card:hover {
   transform: scale(1.05);
   transition: 0.3s;
   cursor: pointer;
+}
+
+.user-card {
+  color: #fff;
+  line-height: 3vh;
+  background-color: var(--main-list-bg-color);
+  padding: 1vh;
+  list-style-type: none;
+  border-radius: 1vh;
+  box-shadow: var(--list-box-shadow);
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5vh;
+}
+
+.error {
+  color: var(--error-text);
+  border: var(--error-outline);
+  border-radius: 1vh;
+  padding: 1vh;
+}
+
+.empty {
+  display: none;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .title {
+    border-radius: 0 0 4vh 4vh;
+  }
+  .users-list {
+    width: 80vw;
+  }
 }
 
 /* Desktop */
