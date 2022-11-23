@@ -1,5 +1,37 @@
+@import "../../global.css";
+
+.selector-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.selector-container label {
+  font-size: 2vh;
+  margin-right: 1vh;
+  font-weight: 500;
+  color: var(--dark-text-color);
+}
+
 .users-selector {
+  width: 5vw;
+  height: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 1vh;
   padding: 0.3vh;
-  background-color: #f5f5f5;
+  font-size: 2vh;
+  background-color: var(--light-text-color);
+  outline: var(--input-outline);
+  vertical-align: center;
+  border: none;
+  margin: none;
+}
+
+@media (max-width: 768px) {
+  .users-selector {
+    width: 12vw;
+  }
 }

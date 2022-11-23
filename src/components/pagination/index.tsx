@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { CaretLeft, CaretRight } from "phosphor-react";
 
 export const Pagination = ({
   hasPreviousPage,
@@ -24,7 +25,7 @@ export const Pagination = ({
         }
         onClick={handlePreviousPageTap}
       >
-        {"<"}
+        <CaretLeft size={25} weight="fill" />
       </button>
       {Array.from(Array(pages), (item, index) => {
         return (
@@ -43,7 +44,7 @@ export const Pagination = ({
         className={hasNextPage ? "page navigation" : "page navigation inactive"}
         onClick={handleNextPageTap}
       >
-        {">"}
+        <CaretRight size={25} weight="fill" />
       </button>
     </div>
   );

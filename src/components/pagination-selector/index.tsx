@@ -9,7 +9,7 @@ export const PaginationSelector: React.FC<PaginationSelectorProps> = ({
   onItemsPerPageChange,
 }) => {
   return (
-    <div>
+    <div className="selector-container">
       <label>Usuários por página: </label>
       <select
         name="users-per-page"

@@ -1,0 +1,54 @@
+@import "../../global.css";
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-component {
+  margin-top: 2vh;
+  height: 7vh;
+  border-radius: 2vh;
+  border: none;
+  background-color: var(--btn-bg-color);
+  color: var(--light-text-color);
+  font-weight: 500;
+  font-size: 2.5vh;
+}
+
+.failed-request {
+  position: absolute;
+  margin-top: 15vh;
+  font-size: 1.5vh;
+  font-weight: 500;
+  color: var(--error-text);
+  text-align: center;
+}
+
+.failed-request:empty {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .btn-component {
+    width: 80vw;
+  }
+
+  .failed-request {
+    font-size: 1.8vh;
+    width: 80vw;
+  }
+}
+
+@media (min-width: 769px) {
+  .btn-component {
+    width: 25vw;
+    cursor: pointer;
+  }
+
+  .failed-request {
+    width: 25vw;
+  }
+}

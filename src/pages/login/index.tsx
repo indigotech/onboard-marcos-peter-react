@@ -5,7 +5,9 @@ import { validatePassword } from "../../validators/password";
 import { loginMutation } from "../../data/graphql/mutations/login";
 import { useMutation } from "@apollo/client";
 import { client } from "../../data/graphql/client";
-import { LoadingSpinning } from "../../components/button-loading";
+import { Header } from "../../components/header";
+import { Button } from "../../components/button";
+import { Input } from "../../components/input";
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -37,44 +39,39 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="container">
-      <h1 className="title">Bem-vindo(a) à Taqtile!</h1>
+      <Header />
       <form className="login-form" onSubmit={handleSubmit}>
-        <div className="login-input">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className={emailError ? "error" : ""}
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setEmailError("");
-            }}
-          />
-          <div className="login-error email-error">{emailError}</div>
-        </div>
-        <div className="login-input">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className={passwordError ? "error" : ""}
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              setPasswordError("");
-            }}
-          />
-          <div className="login-error password-error">{passwordError}</div>
-        </div>
-        <button className="btn-login" type="submit" disabled={loading}>
-          {loading ? <LoadingSpinning /> : "Entrar"}
-        </button>
-        <div className="login-error failed-login">
-          {error ? error.message : ""}
-        </div>
+        <Input
+          name="email"
+          label="Email"
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            setEmailError("");
+          }}
+          error={emailError}
+        />
+        <Input
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setPasswordError("");
+          }}
+          error={passwordError}
+        />
+        <Button
+          type="submit"
+          text="Entrar"
+          loading={loading}
+          error={error}
+          withLoading={true}
+        />
       </form>
     </div>
   );

@@ -1,43 +1,47 @@
-:root {
-  --main-bg: #8776ca;
-  --hover-bg: #a294da;
-  --active-bg: #463b65;
-}
+@import "../../global.css";
 
 .pages {
-  position: absolute;
-  bottom: 2vh;
+  position: fixed;
+  bottom: 0;
   width: 100vw;
+  height: 8vh;
   display: flex;
   justify-content: center;
-  column-gap: 0.5vh;
+  align-items: center;
+  column-gap: 1.5vw;
+  background-color: var(--main-bg-color);
 }
 
 .page {
   width: 3vh;
   height: 3vh;
   border-radius: 50%;
-  background-color: var(--main-bg);
+  background-color: var(--pagination-main-bg);
   border: none;
-  box-shadow: 0 0 0.5vh 0.1vh var(--main-bg);
+  box-shadow: 0 0 0.5vh 0.1vh var(--pagination-main-bg);
   cursor: pointer;
+  color: var(--dark-text-color);
+  font-size: 2vh;
 }
 
 .page:hover {
   transform: scale(1.1);
   transition: 0.3s;
-  background-color: var(--hover-bg);
+  background-color: var(--pagination-hover-bg);
 }
 
 .navigation {
-  margin: 0 0.5vh;
-  font-size: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5vh;
   font-weight: 900;
+  color: var(--dark-text-color);
 }
 
 .current-page {
-  background-color: var(--active-bg);
-  color: #ddd;
+  background-color: var(--pagination-active-bg);
+  color: var(--light-text-color);
 }
 
 .inactive {
@@ -47,5 +51,11 @@
 
 .inactive:hover {
   transform: none;
-  background-color: var(--main-bg);
+  background-color: var(--pagination-main-bg);
+}
+
+@media (max-width: 768px) {
+  .pages {
+    bottom: 0;
+  }
 }
