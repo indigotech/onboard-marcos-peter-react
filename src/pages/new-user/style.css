@@ -9,17 +9,18 @@
   justify-content: center;
 }
 
-.new-user-container h2 {
+.new-user-title h2 {
   font-size: 1.6rem;
   font-weight: 500;
   color: var(--dark-text-color);
   position: absolute;
   top: 18.5vh;
+  left: 42vw;
 }
 
 .input-form {
   position: absolute;
-  top: 26vh;
+  top: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,7 +68,8 @@ button {
     width: 85vw;
   }
 
-  .new-user-container h2 {
+  .new-user-title h2 {
     font-size: 2rem;
+    left: 26vw;
   }
 }

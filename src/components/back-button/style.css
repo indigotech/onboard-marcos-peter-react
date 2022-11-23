@@ -1,0 +1,28 @@
+@import "../../global.css";
+
+.btn-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20vh;
+  left: 2vh;
+  width: 6vh;
+  height: 6vh;
+  border-radius: 50%;
+  background-color: var(--btn-bg-color);
+  color: var(--light-text-color);
+}
+
+.btn-back:hover {
+  background-color: var(--btn-hover-bg-color);
+}
+
+@media (max-width: 768px) {
+  .btn-back {
+    position: absolute;
+    width: 4vh;
+    height: 4vh;
+    top: 21vh;
+  }
+}
