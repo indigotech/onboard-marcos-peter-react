@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
 
-export const PaginationLoading: React.FC = () => {
+export const PaginationShimmer: React.FC = () => {
   return (
     <S.PaginationLoadingContainer>
       <S.PaginationLoadingItem />

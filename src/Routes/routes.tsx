@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { LoginPage } from "../pages/login";
 import { HomePage } from "../pages/home";
 import { NewUser } from "../pages/new-user";
+import { User } from "../pages/user";
 
 const AuthGuard: React.FC<PropsWithChildren> = ({ children }) => {
   const token = window.localStorage.getItem("auth-token");
@@ -35,6 +36,14 @@ export const Router = () => {
         element={
           <AuthGuard>
             <NewUser />
+          </AuthGuard>
+        }
+      />
+      <Route
+        path="user/:id"
+        element={
+          <AuthGuard>
+            <User />
           </AuthGuard>
         }
       />

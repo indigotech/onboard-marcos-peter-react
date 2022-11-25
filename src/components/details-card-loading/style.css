@@ -1,0 +1,46 @@
+@import "../../global.css";
+
+.details-skeleton-container {
+  position: absolute;
+  top: 41vh;
+  left: 2vh;
+  width: 100vw;
+  height: 60vh;
+}
+
+.details-skeleton {
+  width: 91.5vw;
+  height: 18.2vh;
+  background-color: var(--skeleton-bg-color);
+  box-shadow: var(--skeleton-box-shadow);
+  border-radius: 1vh;
+  animation: pulse 2s infinite;
+  list-style-type: none;
+}
+
+/* Desktop */
+
+@media (min-width: 769px) {
+  .details-skeleton-container {
+    position: absolute;
+    left: 19vw;
+    top: 39.8vh;
+  }
+
+  .details-skeleton {
+    width: 61.5vw;
+    height: 20vh;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

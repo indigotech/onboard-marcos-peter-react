@@ -14,7 +14,7 @@ export const PaginationLoadingItem = styled.div`
   width: 3.5vh;
   height: 3.5vh;
   border-radius: 50%;
-  background-color: var(--main-text-color);
+  background-color: var(--medium-text-color);
   margin: 0 0.1vh;
   -webkit-animation: pulse 2s infinite ease-in-out;
   -moz-animation: pulse 2s infinite ease-in-out;

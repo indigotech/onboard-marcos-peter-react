@@ -28,34 +28,6 @@
   row-gap: 1.5vh;
 }
 
-.user-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 8vh;
-  color: var(--light-text-color);
-  background-color: var(--list-bg-primary-color);
-  padding: 1vh;
-  border-radius: 1vh;
-  box-shadow: var(--list-box-shadow);
-}
-
-.user-card p {
-  margin: 0;
-  line-height: 3vh;
-  font-size: 1.8vh;
-}
-
-.user-card:nth-child(odd) {
-  background-color: var(--list-bg-secondary-color);
-}
-
-.user-card:hover {
-  transform: scale(1.05);
-  transition: 0.3s;
-  cursor: pointer;
-}
-
 .error {
   color: var(--error-text);
   border: var(--error-outline);
@@ -83,10 +55,6 @@
   .users-list {
     width: 80vw;
   }
-
-  .user-card {
-    width: 80vw;
-  }
 }
 
 /* Desktop */
@@ -94,12 +62,5 @@
 @media screen and (min-width: 769px) {
   .users {
     margin-top: 35vh;
-  }
-
-  .user-card p {
-    width: 40vw;
-    margin: 0;
-    line-height: 3vh;
-    font-size: 2.2vh;
   }
 }
