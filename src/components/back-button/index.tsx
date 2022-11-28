@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import * as S from "./style";
 import { CaretLeft } from "phosphor-react";
 
 interface Props {
@@ -8,8 +8,9 @@ interface Props {
 
 export const BackButton: React.FC<Props> = (props) => {
   return (
-    <button className="btn-back" onClick={props.onTap}>
-      <CaretLeft size={20} />
-    </button>
+    <S.BackButton onClick={props.onTap}>
+      <S.BackButtonText>Voltar</S.BackButtonText>
+      <CaretLeft size={20} weight="bold" />
+    </S.BackButton>
   );
 };

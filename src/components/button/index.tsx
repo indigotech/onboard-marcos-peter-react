@@ -1,7 +1,7 @@
 import { ApolloError } from "@apollo/client";
 import React from "react";
 import { LoadingSpinning } from "../button-loading";
-import "./style.css";
+import * as S from "./style";
 
 interface ButtonProps {
   type: "button" | "submit" | "reset";
@@ -19,16 +19,11 @@ export const Button: React.FC<ButtonProps> = ({
   error,
 }) => {
   return (
-    <div className="btn-container">
-      <button
-        className="btn-component"
-        type={type}
-        disabled={loading}
-        onClick={onClick}
-      >
+    <S.ButtonContainer>
+      <S.Button type={type} disabled={loading} onClick={onClick}>
         {loading ? <LoadingSpinning /> : text}
-      </button>
-      <div className="failed-request">{error ? error.message : ""}</div>
-    </div>
+      </S.Button>
+      <S.FailedRequest>{error ? error.message : ""}</S.FailedRequest>
+    </S.ButtonContainer>
   );
 };

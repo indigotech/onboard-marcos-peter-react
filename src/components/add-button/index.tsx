@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import * as S from "./style";
 import { Plus } from "phosphor-react";
 
 interface AddButtonProps {
@@ -8,11 +8,9 @@ interface AddButtonProps {
 
 export const AddButton: React.FC<AddButtonProps> = ({ onClick }) => {
   return (
-    <div className="btn-container">
-      <div className="btn-add" onClick={onClick}>
-        <div className="btn-text">Adicionar Usuário</div>
-        <Plus className="icon" size={24} weight="bold" />
-      </div>
-    </div>
+    <S.AddButton onClick={onClick}>
+      <S.AddButtonText>Adicionar Usuário</S.AddButtonText>
+      <Plus className="icon" size={24} weight="bold" />
+    </S.AddButton>
   );
 };
