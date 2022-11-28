@@ -6,7 +6,7 @@
 
 .skeleton-container {
   position: absolute;
-  top: 31vh;
+  top: 34vh;
   left: 0vh;
   width: 100vw;
   height: 60vh;
@@ -17,7 +17,7 @@
 }
 
 .skeleton {
-  width: 78vw;
+  width: 80vw;
   height: 8vh;
   background-color: #9f9f9f;
   box-shadow: 0.7vh 0.7vh 0vh 0vh #767575;
@@ -31,12 +31,12 @@
 @media (min-width: 769px) {
   .skeleton-container {
     position: absolute;
-    top: 35vh;
+    top: 32vh;
     row-gap: 2vh;
   }
 
   .skeleton {
-    width: 25vw;
+    width: 40vw;
   }
 }
 

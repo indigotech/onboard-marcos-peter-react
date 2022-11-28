@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-export const UsersCardLoading: React.FC = () => {
+export const UsersLoading = () => {
   return (
     <div className="skeleton-container">
       <div className="skeleton"></div>

@@ -1,0 +1,51 @@
+:root {
+  --main-bg: #8776ca;
+  --hover-bg: #a294da;
+  --active-bg: #463b65;
+}
+
+.pages {
+  position: absolute;
+  bottom: 2vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  column-gap: 0.5vh;
+}
+
+.page {
+  width: 3vh;
+  height: 3vh;
+  border-radius: 50%;
+  background-color: var(--main-bg);
+  border: none;
+  box-shadow: 0 0 0.5vh 0.1vh var(--main-bg);
+  cursor: pointer;
+}
+
+.page:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+  background-color: var(--hover-bg);
+}
+
+.navigation {
+  margin: 0 0.5vh;
+  font-size: 2vh;
+  font-weight: 900;
+}
+
+.current-page {
+  background-color: var(--active-bg);
+  color: #ddd;
+}
+
+.inactive {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.inactive:hover {
+  transform: none;
+  background-color: var(--main-bg);
+}
