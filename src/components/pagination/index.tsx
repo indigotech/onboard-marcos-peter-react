@@ -8,11 +8,11 @@ export const Pagination = ({
   pages,
   setCurrentPage,
 }) => {
-  const previousPage = () => {
+  const handlePreviousPageTap = () => {
     hasPreviousPage && setCurrentPage(currentPage - 1);
   };
 
-  const nextPage = () => {
+  const handleNextPageTap = () => {
     hasNextPage && setCurrentPage(currentPage + 1);
   };
 
@@ -22,7 +22,7 @@ export const Pagination = ({
         className={
           hasPreviousPage ? "page navigation" : "page navigation inactive"
         }
-        onClick={previousPage}
+        onClick={handlePreviousPageTap}
       >
         {"<"}
       </button>
@@ -41,7 +41,7 @@ export const Pagination = ({
       })}
       <button
         className={hasNextPage ? "page navigation" : "page navigation inactive"}
-        onClick={nextPage}
+        onClick={handleNextPageTap}
       >
         {">"}
       </button>

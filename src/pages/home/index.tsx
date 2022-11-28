@@ -5,6 +5,7 @@ import { Pagination } from "../../components/pagination";
 import { PaginationSelector } from "../../components/pagination-selector";
 import { paginatedUsersQuery } from "../../data/graphql/queries/paginated-users";
 import "./style.css";
+import { PaginationLoading } from "../../components/pagination-loading";
 
 export const HomePage: React.FC = () => {
   const [usersPerPage, setUsersPerPage] = useState(2);
@@ -23,8 +24,9 @@ export const HomePage: React.FC = () => {
     onError: (error) => error,
   });
 
-  const totalUsers = loading ? "" : data.users.count;
-  const pages = Math.ceil(totalUsers / usersPerPage);
+  const totalUsers = data?.users.count;
+  const pages =
+    totalUsers !== undefined ? Math.ceil(totalUsers / usersPerPage) : 0;
 
   return (
     <>
@@ -34,10 +36,7 @@ export const HomePage: React.FC = () => {
         </div>
         <div className="users">
           <h2 className="sub-title">Lista de Taqtilers:</h2>
-          <PaginationSelector
-            setUsersPerPage={setUsersPerPage}
-            setCurrentPage={setCurrentPage}
-          />
+          <PaginationSelector onItemsPerPageChange={setUsersPerPage} />
           <ul className="user-list">
             {loading ? (
               <UsersCardLoading />
@@ -52,7 +51,7 @@ export const HomePage: React.FC = () => {
           </ul>
         </div>
         {loading ? (
-          ""
+          <PaginationLoading />
         ) : (
           <Pagination
             currentPage={currentPage}

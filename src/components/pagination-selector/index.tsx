@@ -1,7 +1,13 @@
 import React from "react";
 import "./style.css";
 
-export const PaginationSelector = ({ setUsersPerPage, setCurrentPage }) => {
+interface PaginationSelectorProps {
+  onItemsPerPageChange: (itemsPerPage: number) => void;
+}
+
+export const PaginationSelector: React.FC<PaginationSelectorProps> = ({
+  onItemsPerPageChange,
+}) => {
   return (
     <div>
       <label>Usuários por página: </label>
@@ -9,8 +15,7 @@ export const PaginationSelector = ({ setUsersPerPage, setCurrentPage }) => {
         name="users-per-page"
         className="users-selector"
         onChange={(e) => {
-          setUsersPerPage(Number(e.target.value));
-          setCurrentPage(0);
+          onItemsPerPageChange(Number(e.target.value));
         }}
       >
         <option value="2">2</option>
