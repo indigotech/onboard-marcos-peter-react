@@ -9,7 +9,7 @@ interface InputProps {
   id?: string;
   value?: string;
   onChange: FocusEventHandler<HTMLInputElement>;
-  error?: string;
+  errorMessage?: string;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -20,13 +20,13 @@ export const Input: React.FC<InputProps> = ({
   id,
   value,
   onChange,
-  error,
+  errorMessage,
 }) => {
   return (
     <div className="input-container">
       <label htmlFor={name}>{label}</label>
       <input
-        className={error ? "input-error" : ""}
+        className={errorMessage ? "input-error" : ""}
         type={type}
         name={name}
         id={id}
@@ -34,7 +34,7 @@ export const Input: React.FC<InputProps> = ({
         onChange={onChange}
         placeholder={placeholder}
       />
-      <div className="validation-error">{error}</div>
+      <div className="validation-error">{errorMessage}</div>
     </div>
   );
 };

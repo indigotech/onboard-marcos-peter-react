@@ -5,7 +5,7 @@ import { validatePassword } from "../../validators/password";
 import { loginMutation } from "../../data/graphql/mutations/login";
 import { useMutation } from "@apollo/client";
 import { client } from "../../data/graphql/client";
-import { Header } from "../../components/header";
+import { SectionHeader } from "../../components/section-header";
 import { Button } from "../../components/button";
 import { Input } from "../../components/input";
 
@@ -39,7 +39,7 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className="container">
-      <Header />
+      <SectionHeader />
       <form className="login-form" onSubmit={handleSubmit}>
         <Input
           name="email"
@@ -51,7 +51,7 @@ export const LoginPage: React.FC = () => {
             setEmail(e.target.value);
             setEmailError("");
           }}
-          error={emailError}
+          errorMessage={emailError}
         />
         <Input
           name="password"
@@ -63,15 +63,9 @@ export const LoginPage: React.FC = () => {
             setPassword(e.target.value);
             setPasswordError("");
           }}
-          error={passwordError}
+          errorMessage={passwordError}
         />
-        <Button
-          type="submit"
-          text="Entrar"
-          loading={loading}
-          error={error}
-          withLoading={true}
-        />
+        <Button type="submit" text="Entrar" loading={loading} error={error} />
       </form>
     </div>
   );

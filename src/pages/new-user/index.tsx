@@ -1,12 +1,12 @@
 import React, { FormEvent, useState } from "react";
-import { Header } from "../../components/header";
+import { SectionHeader } from "../../components/section-header";
 import { validateEmail } from "../../validators/email";
 import { validateName } from "../../validators/name";
 import { validatePassword } from "../../validators/password";
 import { validatePhone } from "../../validators/phone";
 import { validateBirthDate } from "../../validators/birthdate";
 import "./style.css";
-import { formatPhone } from "../../utils/phone-formater";
+import { formatPhone } from "../../utils/phone-formatter";
 import { validateConfirmPassword } from "../../validators/confirm-password";
 import { Input } from "../../components/input";
 import { Button } from "../../components/button";
@@ -30,10 +30,13 @@ export const NewUser: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const nameError = validateName(name);
+    const nameError = validateName(name, { minLength: 3, maxLength: 60 });
     const emailError = validateEmail(email);
-    const phoneError = validatePhone(phone);
-    const birthDateError = validateBirthDate(birthDate);
+    const phoneError = validatePhone(phone, { minLength: 10, maxLength: 15 });
+    const birthDateError = validateBirthDate(birthDate, {
+      allowUnderage: false,
+      minAge: 18,
+    });
     const passwordError = validatePassword(password);
     const passwordConfirmationError = validateConfirmPassword(
       password,
@@ -57,13 +60,11 @@ export const NewUser: React.FC = () => {
     ) {
       setLoading(true);
     }
-
-    return;
   };
 
   return (
     <div className="new-user-container">
-      <Header />
+      <SectionHeader />
       <h2>Novo Usuário</h2>
       <form className="input-form" onSubmit={handleSubmit}>
         <Input
@@ -76,7 +77,7 @@ export const NewUser: React.FC = () => {
             setName(e.target.value);
             setNameError("");
           }}
-          error={nameError}
+          errorMessage={nameError}
         />
         <Input
           name="email"
@@ -88,7 +89,7 @@ export const NewUser: React.FC = () => {
             setEmail(e.target.value);
             setEmailError("");
           }}
-          error={emailError}
+          errorMessage={emailError}
         />
         <Input
           name="phone"
@@ -100,7 +101,7 @@ export const NewUser: React.FC = () => {
             setPhone(formatPhone(e.target.value));
             setPhoneError("");
           }}
-          error={phoneError}
+          errorMessage={phoneError}
         />
         <Input
           name="birthDate"
@@ -112,7 +113,7 @@ export const NewUser: React.FC = () => {
             setBirthDate(e.target.value);
             setBirthDateError("");
           }}
-          error={birthDateError}
+          errorMessage={birthDateError}
         />
         <div className="input-container">
           <label htmlFor="role">Função</label>
@@ -139,7 +140,7 @@ export const NewUser: React.FC = () => {
             setPassword(e.target.value);
             setPasswordError("");
           }}
-          error={passwordError}
+          errorMessage={passwordError}
         />
         <Input
           name="passwordConfirmation"
@@ -151,14 +152,9 @@ export const NewUser: React.FC = () => {
             setPasswordConfirmation(e.target.value);
             setPasswordConfirmationError("");
           }}
-          error={passwordConfirmationError}
+          errorMessage={passwordConfirmationError}
         />
-        <Button
-          type="submit"
-          text="Cadastrar"
-          loading={loading}
-          withLoading={true}
-        />
+        <Button type="submit" text="Cadastrar" loading={loading} />
       </form>
     </div>
   );

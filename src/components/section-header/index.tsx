@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-export const Header: React.FC = () => {
+export const SectionHeader: React.FC = () => {
   return (
     <div className="title">
       <h1>Bem-vindo(a) à Taqtile!</h1>

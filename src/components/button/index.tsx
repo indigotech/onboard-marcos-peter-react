@@ -9,7 +9,6 @@ interface ButtonProps {
   loading?: boolean;
   onClick?: () => void;
   error?: ApolloError;
-  withLoading: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -18,7 +17,6 @@ export const Button: React.FC<ButtonProps> = ({
   loading,
   onClick,
   error,
-  withLoading,
 }) => {
   return (
     <div className="btn-container">
@@ -28,7 +26,7 @@ export const Button: React.FC<ButtonProps> = ({
         disabled={loading}
         onClick={onClick}
       >
-        {withLoading ? loading ? <LoadingSpinning /> : text : text}
+        {loading ? <LoadingSpinning /> : text}
       </button>
       <div className="failed-request">{error ? error.message : ""}</div>
     </div>
