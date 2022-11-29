@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import React from "react";
 import { BackButton } from "../../components/back-button";
 import { DetailsCardShimmer } from "../../components/details-card-loading";
-import { SectionHeader } from "../../components/header";
+import { SectionHeader } from "../../components/section-header";
 import { UserCard } from "../../components/user-card";
 import { userQuery } from "../../data/graphql/queries/user";
 import "./style.css";

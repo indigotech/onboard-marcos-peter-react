@@ -1,5 +1,5 @@
 import React from "react";
-import { SectionHeader } from "../../components/header";
+import { SectionHeader } from "../../components/section-header";
 import "./style.ts";
 import { useMutation } from "@apollo/client";
 import { CreateUserMutation } from "../../data/graphql/mutations/create-user";
