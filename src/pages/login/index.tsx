@@ -4,7 +4,6 @@ import { validateEmail } from "../../validators/email";
 import { validatePassword } from "../../validators/password";
 import { loginMutation } from "../../data/graphql/mutations/login";
 import { useMutation } from "@apollo/client";
-import { client } from "../../data/graphql/client";
 import { SectionHeader } from "../../components/section-header";
 import { Button } from "../../components/button";
 import { Input } from "../../components/input";
@@ -16,7 +15,6 @@ export const LoginPage: React.FC = () => {
   const [passwordError, setPasswordError] = useState<string>("");
 
   const [login, { loading, error }] = useMutation(loginMutation, {
-    client: client,
     onCompleted: (data) => {
       window.localStorage.setItem("auth-token", data.login.token);
       window.location.href = "/home";

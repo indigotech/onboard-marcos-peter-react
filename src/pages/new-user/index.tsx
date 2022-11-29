@@ -10,7 +10,6 @@ import { formatPhone } from "../../utils/phone-formatter";
 import { validateConfirmPassword } from "../../validators/confirm-password";
 import { Input } from "../../components/input";
 import { Button } from "../../components/button";
-import { client } from "../../data/graphql/client";
 import { useMutation } from "@apollo/client";
 import { CreateUserMutation } from "../../data/graphql/mutations/create-user";
 import { BackButton } from "../../components/back-button";
@@ -32,7 +31,6 @@ export const NewUser: React.FC = () => {
     useState<string>("");
 
   const [createUser, { loading, error }] = useMutation(CreateUserMutation, {
-    client: client,
     context: {
       headers: { authorization: window.localStorage.getItem("auth-token") },
     },
@@ -57,6 +55,10 @@ export const NewUser: React.FC = () => {
       passwordConfirmation
     );
 
+    setPhone(
+      phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")
+    );
+
     setNameError(nameError);
     setEmailError(emailError);
     setPhoneError(phoneError);
@@ -72,7 +74,6 @@ export const NewUser: React.FC = () => {
       !passwordError &&
       !passwordConfirmationError
     ) {
-      setPhone(phone.replace("^[0-9]*$", ""));
       createUser({
         variables: {
           data: {
@@ -91,7 +92,7 @@ export const NewUser: React.FC = () => {
   return (
     <div className="new-user-container">
       <SectionHeader />
-      <BackButton />
+      <BackButton onTap={() => window.history.back()} />
       <h2>Novo Usuário</h2>
       <form className="input-form" onSubmit={handleSubmit}>
         <Input

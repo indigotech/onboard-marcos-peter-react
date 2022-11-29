@@ -2,9 +2,13 @@ import React from "react";
 import "./style.css";
 import { CaretLeft } from "phosphor-react";
 
-export const BackButton: React.FC = () => {
+interface Props {
+  onTap: () => void;
+}
+
+export const BackButton: React.FC<Props> = (props) => {
   return (
-    <button className="btn-back" onClick={() => window.history.back()}>
+    <button className="btn-back" onClick={props.onTap}>
       <CaretLeft size={20} />
     </button>
   );
