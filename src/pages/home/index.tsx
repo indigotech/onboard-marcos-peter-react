@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
-import { UsersCardLoading } from "../../components/users-card-loading";
+import { UsersCardShimmer } from "../../components/users-card-loading";
 import { Pagination } from "../../components/pagination";
 import { PaginationSelector } from "../../components/pagination-selector";
 import { paginatedUsersQuery } from "../../data/graphql/queries/paginated-users";
@@ -39,14 +39,16 @@ export const HomePage: React.FC = () => {
         <PaginationSelector onItemsPerPageChange={setUsersPerPage} />
         <div className="user-list">
           {loading ? (
-            <UsersCardLoading />
+            <UsersCardShimmer />
           ) : (
             data.users.nodes.map((user) => (
               <UserCard
                 key={user.id}
                 name={user.name}
                 email={user.email}
-                onClick={() => (window.location.href = `user/${user.id}`)}
+                onClick={() =>
+                  (window.location.href = `user-detail/${user.id}`)
+                }
               />
             ))
           )}
