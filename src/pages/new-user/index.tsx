@@ -10,6 +10,9 @@ import { formatPhone } from "../../utils/phone-formatter";
 import { validateConfirmPassword } from "../../validators/confirm-password";
 import { Input } from "../../components/input";
 import { Button } from "../../components/button";
+import { useMutation } from "@apollo/client";
+import { CreateUserMutation } from "../../data/graphql/mutations/create-user";
+import { BackButton } from "../../components/back-button";
 
 export const NewUser: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -26,7 +29,16 @@ export const NewUser: React.FC = () => {
   const [passwordError, setPasswordError] = useState<string>("");
   const [passwordConfirmationError, setPasswordConfirmationError] =
     useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
+
+  const [createUser, { loading, error }] = useMutation(CreateUserMutation, {
+    context: {
+      headers: { authorization: window.localStorage.getItem("auth-token") },
+    },
+    onCompleted: () => {
+      window.location.href = "/home";
+    },
+    onError: (error) => error,
+  });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,6 +53,10 @@ export const NewUser: React.FC = () => {
     const passwordConfirmationError = validateConfirmPassword(
       password,
       passwordConfirmation
+    );
+
+    setPhone(
+      phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")
     );
 
     setNameError(nameError);
@@ -58,13 +74,25 @@ export const NewUser: React.FC = () => {
       !passwordError &&
       !passwordConfirmationError
     ) {
-      setLoading(true);
+      createUser({
+        variables: {
+          data: {
+            name,
+            email,
+            phone,
+            birthDate,
+            password,
+            role,
+          },
+        },
+      });
     }
   };
 
   return (
     <div className="new-user-container">
       <SectionHeader />
+      <BackButton onTap={() => window.history.back()} />
       <h2>Novo Usuário</h2>
       <form className="input-form" onSubmit={handleSubmit}>
         <Input
