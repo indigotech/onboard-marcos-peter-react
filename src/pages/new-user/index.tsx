@@ -182,7 +182,12 @@ export const NewUser: React.FC = () => {
           }}
           errorMessage={passwordConfirmationError}
         />
-        <Button type="submit" text="Cadastrar" loading={loading} />
+        <Button
+          type="submit"
+          text="Cadastrar"
+          loading={loading}
+          error={error}
+        />
       </form>
     </div>
   );

@@ -1,0 +1,41 @@
+@import "../../global.css";
+
+.user-card-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  width: 60vw;
+  color: var(--light-text-color);
+  background-color: var(--list-bg-primary-color);
+  padding: 1.5vh;
+  border-radius: 1vh;
+  box-shadow: var(--list-box-shadow);
+}
+
+.user-card-component p {
+  margin: 0;
+  line-height: 3.5vh;
+  font-size: 2.5vh;
+}
+
+.user-card-component:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.user-card-component:nth-child(odd) {
+  background-color: var(--list-bg-secondary-color);
+}
+
+@media (max-width: 768px) {
+  .user-card-component {
+    width: 85vw;
+  }
+
+  .user-card-component p {
+    line-height: 3vh;
+    font-size: 2vh;
+  }
+}

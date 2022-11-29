@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-.new-user-title h2 {
+.new-user-container h2 {
   font-size: 1.6rem;
   font-weight: 500;
   color: var(--dark-text-color);
@@ -68,7 +68,7 @@ button {
     width: 85vw;
   }
 
-  .new-user-title h2 {
+  .new-user-container h2 {
     font-size: 2rem;
     left: 26vw;
   }
