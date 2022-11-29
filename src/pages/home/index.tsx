@@ -6,6 +6,8 @@ import { PaginationSelector } from "../../components/pagination-selector";
 import { paginatedUsersQuery } from "../../data/graphql/queries/paginated-users";
 import "./style.css";
 import { PaginationLoading } from "../../components/pagination-loading";
+import { AddButton } from "../../components/add-button";
+import { SectionHeader } from "../../components/section-header";
 
 export const HomePage: React.FC = () => {
   const [usersPerPage, setUsersPerPage] = useState(2);
@@ -31,24 +33,22 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <div className="home-container">
-        <div className="title">
-          <h1>Bem-vindo(a) à Taqtile!</h1>
-        </div>
+        <SectionHeader />
         <div className="users">
           <h2 className="sub-title">Lista de Taqtilers:</h2>
           <PaginationSelector onItemsPerPageChange={setUsersPerPage} />
-          <ul className="user-list">
+          <div className="user-list">
             {loading ? (
               <UsersCardLoading />
             ) : (
               data.users.nodes.map((user) => (
-                <li className="user-card" key={user.id}>
+                <div className="user-card" key={user.id}>
                   <p>Nome: {user.name}</p>
                   <p>Email: {user.email}</p>
-                </li>
+                </div>
               ))
             )}
-          </ul>
+          </div>
         </div>
         {loading ? (
           <PaginationLoading />
@@ -61,6 +61,7 @@ export const HomePage: React.FC = () => {
             hasNextPage={data.users.pageInfo.hasNextPage}
           />
         )}
+        <AddButton onClick={() => (window.location.href = "/new-user")} />
       </div>
     </>
   );

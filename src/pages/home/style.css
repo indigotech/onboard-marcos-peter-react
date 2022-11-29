@@ -1,25 +1,4 @@
-:root {
-  --main-text-color: #686868;
-  --bg-dark: #1f1f1f;
-  --btn-text-color: #fff;
-  --btn-bg-color: #5d53cc;
-  --text-dark: #171335;
-  --main-list-bg-color: #5047b7;
-  --error-text: #c72929;
-  --error-outline: 0.3vh solid #ff0000;
-  --list-box-shadow: 0.7vh 0.7vh 0vh 0vh #241e67;
-  --list-bg-color-variation: #3b329c;
-}
-
-* {
-  font-family: "Roboto", sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f2f2f2;
-}
+@import "../../global.css";
 
 .home-container {
   display: flex;
@@ -27,24 +6,10 @@ body {
   align-items: center;
 }
 
-.title {
-  width: 100vw;
-  height: 20vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  font-size: 2vh;
-  color: #f2f2f2;
-  background-color: var(--bg-dark);
-}
-
 .sub-title {
   font-size: 2.5vh;
   margin-top: 6vh;
-  color: var(--text-dark);
+  color: var(--dark-text-color);
 }
 
 .users {
@@ -57,30 +22,38 @@ body {
   row-gap: 1vh;
 }
 
+.user-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5vh;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 8vh;
+  color: var(--light-text-color);
+  background-color: var(--list-bg-primary-color);
+  padding: 1vh;
+  border-radius: 1vh;
+  box-shadow: var(--list-box-shadow);
+}
+
+.user-card p {
+  margin: 0;
+  line-height: 3vh;
+  font-size: 1.8vh;
+}
+
 .user-card:nth-child(odd) {
-  background-color: var(--list-bg-color-variation);
+  background-color: var(--list-bg-secondary-color);
 }
 
 .user-card:hover {
   transform: scale(1.05);
   transition: 0.3s;
   cursor: pointer;
-}
-
-.user-card {
-  color: #fff;
-  line-height: 3vh;
-  background-color: var(--main-list-bg-color);
-  padding: 1vh;
-  list-style-type: none;
-  border-radius: 1vh;
-  box-shadow: var(--list-box-shadow);
-}
-
-.user-list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 1.5vh;
 }
 
 .error {
@@ -107,10 +80,6 @@ body {
     row-gap: 1vh;
   }
 
-  .title {
-    border-radius: 0 0 4vh 4vh;
-  }
-
   .users-list {
     width: 80vw;
   }
@@ -126,7 +95,11 @@ body {
   .users {
     margin-top: 35vh;
   }
-  .user-card {
+
+  .user-card p {
     width: 40vw;
+    margin: 0;
+    line-height: 3vh;
+    font-size: 2.2vh;
   }
 }

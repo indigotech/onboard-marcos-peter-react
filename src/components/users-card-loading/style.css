@@ -1,12 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "../../global.css";
 
 .skeleton-container {
   position: absolute;
-  top: 34vh;
+  top: 36vh;
   left: 0vh;
   width: 100vw;
   height: 60vh;
@@ -18,9 +14,9 @@
 
 .skeleton {
   width: 80vw;
-  height: 8vh;
-  background-color: #9f9f9f;
-  box-shadow: 0.7vh 0.7vh 0vh 0vh #767575;
+  height: 10vh;
+  background-color: var(--skeleton-bg-color);
+  box-shadow: var(--skeleton-box-shadow);
   border-radius: 1vh;
   animation: pulse 2s infinite;
   list-style-type: none;
@@ -31,7 +27,7 @@
 @media (min-width: 769px) {
   .skeleton-container {
     position: absolute;
-    top: 32vh;
+    top: 34vh;
     row-gap: 2vh;
   }
 
