@@ -31,6 +31,14 @@ export const Select = styled.select`
   padding: 0 1vh;
   color: var(--medium-text-color);
   margin-bottom: 2vh;
+  // change the arrow icon
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='%23b3b3b3' d='M10 13.5l5-5h-3v-5h-4v5h-3l5 5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: 99% 51%;
+  background-size: 2rem;
 
   @media (min-width: 769px) {
     width: 45vw;

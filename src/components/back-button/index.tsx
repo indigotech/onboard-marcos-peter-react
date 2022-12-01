@@ -1,16 +1,17 @@
 import React from "react";
-import * as S from "./style";
+import { BackButtonStyle, BackButtonText } from "./style";
 import { CaretLeft } from "phosphor-react";
 
 interface Props {
   onTap: () => void;
+  text: string;
 }
 
 export const BackButton: React.FC<Props> = (props) => {
   return (
-    <S.BackButton onClick={props.onTap}>
-      <S.BackButtonText>Voltar</S.BackButtonText>
+    <BackButtonStyle onClick={props.onTap}>
+      <BackButtonText>{props.text}</BackButtonText>
       <CaretLeft size={20} weight="bold" />
-    </S.BackButton>
+    </BackButtonStyle>
   );
 };

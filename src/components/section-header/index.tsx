@@ -1,14 +1,14 @@
 import React from "react";
 import { LogoutButton } from "../logout-button";
-import * as S from "./style";
+import { HeaderWrapper, HeaderTitle } from "./style";
 
 export const SectionHeader: React.FC = () => {
   const loggedIn = window.localStorage.getItem("auth-token");
 
   return (
-    <S.HeaderWrapper>
-      <S.HeaderTitle>Bem-vindo(a) à Taqtile!</S.HeaderTitle>
+    <HeaderWrapper>
+      <HeaderTitle>Bem-vindo(a) à Taqtile!</HeaderTitle>
       {loggedIn && <LogoutButton />}
-    </S.HeaderWrapper>
+    </HeaderWrapper>
   );
 };

@@ -1,15 +1,15 @@
 import React from "react";
-import * as S from "./style";
+import { PaginationLoadingContainer, PaginationLoadingItem } from "./style";
 
 export const PaginationShimmer: React.FC = () => {
   return (
-    <S.PaginationLoadingContainer>
-      <S.PaginationLoadingItem />
-      <S.PaginationLoadingItem />
-      <S.PaginationLoadingItem />
-      <S.PaginationLoadingItem />
-      <S.PaginationLoadingItem />
-      <S.PaginationLoadingItem />
-    </S.PaginationLoadingContainer>
+    <PaginationLoadingContainer>
+      <PaginationLoadingItem />
+      <PaginationLoadingItem />
+      <PaginationLoadingItem />
+      <PaginationLoadingItem />
+      <PaginationLoadingItem />
+      <PaginationLoadingItem />
+    </PaginationLoadingContainer>
   );
 };

@@ -18,7 +18,7 @@ export const UserDetailPage: React.FC = () => {
   return (
     <div className="user-details-container">
       <SectionHeader />
-      <BackButton onTap={() => window.history.back()} />
+      <BackButton text="Voltar" onTap={() => window.history.back()} />
       <h1 className="user-details-title">Informações</h1>
       <div className="user-details-content">
         {loading ? (

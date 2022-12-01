@@ -7,7 +7,7 @@ export const ButtonContainer = styled.div`
   justify-content: center;
 `;
 
-export const Button = styled.button`
+export const DefaultButtonStyle = styled.button`
   margin-top: 2vh;
   height: 7vh;
   border-radius: 2vh;

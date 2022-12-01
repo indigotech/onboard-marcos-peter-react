@@ -1,5 +1,5 @@
 import React, { FocusEventHandler } from "react";
-import * as S from "./style";
+import { InputWrapper, Label, InputStyled, ValidationError } from "./style";
 
 export interface InputProps {
   name: string;
@@ -10,6 +10,10 @@ export interface InputProps {
   value?: string;
   onChange: FocusEventHandler<HTMLInputElement>;
   errorMessage?: string;
+}
+
+export interface LabelProps {
+  errorMessage: string;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -23,11 +27,11 @@ export const Input: React.FC<InputProps> = ({
   errorMessage,
 }) => {
   return (
-    <S.InputWrapper>
-      <S.Label htmlFor={id} errorMessage={errorMessage}>
+    <InputWrapper>
+      <Label htmlFor={id} errorMessage={errorMessage}>
         {label}
-      </S.Label>
-      <S.Input
+      </Label>
+      <InputStyled
         type={type}
         name={name}
         id={id}
@@ -36,7 +40,7 @@ export const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         errorMessage={errorMessage}
       />
-      <S.ValidationError>{errorMessage}</S.ValidationError>
-    </S.InputWrapper>
+      <ValidationError>{errorMessage}</ValidationError>
+    </InputWrapper>
   );
 };

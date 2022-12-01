@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { InputProps } from ".";
+import { LabelProps } from "./index";
 
 export const InputWrapper = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ export const InputWrapper = styled.div`
   width: fit-content;
 `;
 
-export const Input = styled.input<Pick<InputProps, "errorMessage">>`
+export const InputStyled = styled.input<LabelProps>`
   width: 80vw;
   height: 7vh;
   border-radius: 2vh;
@@ -31,7 +31,7 @@ export const Input = styled.input<Pick<InputProps, "errorMessage">>`
   }
 `;
 
-export const Label = styled.label<Pick<InputProps, "errorMessage">>`
+export const Label = styled.label<LabelProps>`
   font-size: 1.8vh;
   font-weight: 500;
   color: ${(props) =>

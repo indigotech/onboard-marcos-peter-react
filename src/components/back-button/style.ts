@@ -18,7 +18,7 @@ export const BackButtonText = styled.p`
   }
 `;
 
-export const BackButton = styled.button`
+export const BackButtonStyle = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

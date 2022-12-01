@@ -19,6 +19,5 @@ export const NewUserTitle = styled.h1`
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    /* left: 26vw; */
   }
 `;

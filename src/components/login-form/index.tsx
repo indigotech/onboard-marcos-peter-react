@@ -2,9 +2,9 @@ import { ApolloError } from "@apollo/client";
 import React, { FormEvent, useState } from "react";
 import { validateEmail } from "../../validators/email";
 import { validatePassword } from "../../validators/password";
-import { Button } from "../button";
+import { DefaultButton } from "../default-button";
 import { Input } from "../input";
-import * as S from "./style";
+import { FormWrapper, InputWrapper } from "./style";
 
 interface LoginParamsTypes {
   variables: {
@@ -45,8 +45,8 @@ export const LoginForm: React.FC<LoginFormTypes> = ({
   };
 
   return (
-    <S.FormWrapper onSubmit={handleSubmit}>
-      <S.InputWrapper>
+    <FormWrapper onSubmit={handleSubmit}>
+      <InputWrapper>
         <Input
           name="email"
           label="Email"
@@ -59,8 +59,8 @@ export const LoginForm: React.FC<LoginFormTypes> = ({
           }}
           errorMessage={emailError}
         />
-      </S.InputWrapper>
-      <S.InputWrapper>
+      </InputWrapper>
+      <InputWrapper>
         <Input
           name="password"
           label="Password"
@@ -73,8 +73,13 @@ export const LoginForm: React.FC<LoginFormTypes> = ({
           }}
           errorMessage={passwordError}
         />
-      </S.InputWrapper>
-      <Button type="submit" text="Entrar" loading={loading} error={error} />
-    </S.FormWrapper>
+      </InputWrapper>
+      <DefaultButton
+        type="submit"
+        text="Entrar"
+        loading={loading}
+        error={error}
+      />
+    </FormWrapper>
   );
 };

@@ -17,7 +17,7 @@ export const LogoutButtonText = style.p`
   }
 `;
 
-export const LogoutButton = style.button`
+export const LogoutButtonStyled = style.button`
   display: flex;
   justify-content: center;
   align-items: center;

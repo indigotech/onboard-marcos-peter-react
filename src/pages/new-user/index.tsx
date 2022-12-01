@@ -5,7 +5,8 @@ import { useMutation } from "@apollo/client";
 import { CreateUserMutation } from "../../data/graphql/mutations/create-user";
 import { BackButton } from "../../components/back-button";
 import { NewUserForm } from "../../components/new-user-form";
-import * as S from "./style";
+import { NewUserWrapper, NewUserTitle } from "./style";
+import { NewUserFormData } from "../../components/new-user-form";
 
 export const NewUser: React.FC = () => {
   const [createUser, { loading, error }] = useMutation(CreateUserMutation, {
@@ -19,15 +20,21 @@ export const NewUser: React.FC = () => {
   });
 
   return (
-    <S.NewUserWrapper>
+    <NewUserWrapper>
       <SectionHeader />
-      <BackButton onTap={() => window.history.back()} />
-      <S.NewUserTitle>Novo Usuário</S.NewUserTitle>
+      <BackButton text="Voltar" onTap={() => window.history.back()} />
+      <NewUserTitle>Novo Usuário</NewUserTitle>
       <NewUserForm
-        createUserFunction={createUser}
+        onSubmitSuccess={(formData: NewUserFormData) => {
+          createUser({
+            variables: {
+              data: formData,
+            },
+          });
+        }}
         loading={loading}
         error={error}
       />
-    </S.NewUserWrapper>
+    </NewUserWrapper>
   );
 };

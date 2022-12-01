@@ -1,5 +1,5 @@
 import React from "react";
-import * as S from "./style";
+import { Container } from "./style";
 import { loginMutation } from "../../data/graphql/mutations/login";
 import { useMutation } from "@apollo/client";
 import { SectionHeader } from "../../components/section-header";
@@ -15,9 +15,9 @@ export const LoginPage: React.FC = () => {
   });
 
   return (
-    <S.Container>
+    <Container>
       <SectionHeader />
       <LoginForm loginFunction={login} loading={loading} error={error} />
-    </S.Container>
+    </Container>
   );
 };
