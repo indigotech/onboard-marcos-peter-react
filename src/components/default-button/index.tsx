@@ -1,7 +1,7 @@
 import { ApolloError } from "@apollo/client";
 import React from "react";
 import { LoadingSpinning } from "../button-loading";
-import "./style.css";
+import { ButtonContainer, DefaultButtonStyle, FailedRequest } from "./style";
 
 interface ButtonProps {
   type: "button" | "submit" | "reset";
@@ -11,7 +11,7 @@ interface ButtonProps {
   error?: ApolloError;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const DefaultButton: React.FC<ButtonProps> = ({
   type,
   text,
   loading,
@@ -19,16 +19,11 @@ export const Button: React.FC<ButtonProps> = ({
   error,
 }) => {
   return (
-    <div className="btn-container">
-      <button
-        className="btn-component"
-        type={type}
-        disabled={loading}
-        onClick={onClick}
-      >
+    <ButtonContainer>
+      <DefaultButtonStyle type={type} disabled={loading} onClick={onClick}>
         {loading ? <LoadingSpinning /> : text}
-      </button>
-      <div className="failed-request">{error ? error.message : ""}</div>
-    </div>
+      </DefaultButtonStyle>
+      <FailedRequest>{error ? error.message : ""}</FailedRequest>
+    </ButtonContainer>
   );
 };

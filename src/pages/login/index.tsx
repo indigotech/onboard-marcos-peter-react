@@ -1,19 +1,11 @@
-import React, { useState, FormEvent } from "react";
-import "./style.css";
-import { validateEmail } from "../../validators/email";
-import { validatePassword } from "../../validators/password";
+import React from "react";
+import { Container } from "./style";
 import { loginMutation } from "../../data/graphql/mutations/login";
 import { useMutation } from "@apollo/client";
 import { SectionHeader } from "../../components/section-header";
-import { Button } from "../../components/button";
-import { Input } from "../../components/input";
+import { LoginForm } from "../../components/login-form";
 
 export const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState<string>(null);
-  const [passwordError, setPasswordError] = useState<string>("");
-
   const [login, { loading, error }] = useMutation(loginMutation, {
     onCompleted: (data) => {
       window.localStorage.setItem("auth-token", data.login.token);
@@ -22,49 +14,10 @@ export const LoginPage: React.FC = () => {
     onError: (error) => error,
   });
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const emailError = validateEmail(email);
-    const passwordError = validatePassword(password);
-
-    setEmailError(emailError);
-    setPasswordError(passwordError);
-
-    if (!emailError && !passwordError) {
-      login({ variables: { data: { email, password } } });
-    }
-  };
-
   return (
-    <div className="container">
+    <Container>
       <SectionHeader />
-      <form className="login-form" onSubmit={handleSubmit}>
-        <Input
-          name="email"
-          label="Email"
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setEmailError("");
-          }}
-          errorMessage={emailError}
-        />
-        <Input
-          name="password"
-          label="Password"
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setPasswordError("");
-          }}
-          errorMessage={passwordError}
-        />
-        <Button type="submit" text="Entrar" loading={loading} error={error} />
-      </form>
-    </div>
+      <LoginForm loginFunction={login} loading={loading} error={error} />
+    </Container>
   );
 };
